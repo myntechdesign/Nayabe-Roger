@@ -562,3 +562,24 @@ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wid
 .ph{aspect-ratio:2/1;overflow:hidden;--zoom:1.25}
 .ph video{transform:scale(var(--zoom))}
 .banner video{transform:scale(1.15)}
+
+
+/* ===== 8. CORRECCIONES PARA CELULAR ===== */
+/* Nombres de la portada: grupos que no se parten */
+.nl{display:inline-block;white-space:nowrap}
+#names{text-wrap:balance}
+
+/* Banner (video 1) en celular: rectángulo horizontal, sin franjas negras.
+   --zoom del banner: sube el 1.4 si aún se ve negro, bájalo si se corta mucho */
+@media (max-width:767px){
+.banner{height:auto;aspect-ratio:16/9}
+.banner video{position:absolute;inset:0;transform:scale(1.4)}
+.banner em{bottom:12px;font-size:38px}
+}
+
+/* Padres y padrinos: bloques ordenados, uno debajo de otro */
+.cols{grid-template-columns:1fr;gap:0;margin-top:20px}
+.fm{padding:22px 6px 4px}
+.fm+.fm{margin-top:18px;border-top:1px solid #CFB08099}
+.fm b{font:400 36px/1.1 'Great Vibes',cursive;font-style:normal;color:var(--mid);margin:0 0 12px}
+.fm span{display:block;font-size:22px;line-height:1.3;margin:5px 0;text-wrap:balance}

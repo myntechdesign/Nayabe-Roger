@@ -7,5 +7,5 @@ var BODA = {
   // WhatsApp que recibe las confirmaciones (código de país + número, sin + ni espacios)
   whatsapp: '51907892266',
   // Cada cuántos milisegundos avanza solo el carrusel de videos
-  carruselMs: 4000
+  carruselMs: 6500
 };

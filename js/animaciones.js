@@ -25,11 +25,17 @@ for (var i = 0; i < 20; i++) {
 
 /* --- Portada: cada letra de los nombres entra por separado --- */
 var n = document.getElementById('names'), t = n.textContent; n.innerHTML = '';
-t.split('').forEach(function (c) { var e = document.createElement('span'); e.innerHTML = c == ' ' ? '&nbsp;' : c; n.appendChild(e); });
+/* Se divide en dos grupos ("Nayabe &" y "Roger"): en el celular quedan en dos líneas y nunca se corta una palabra */
+var cut = t.lastIndexOf(' ');
+[t.slice(0, cut), t.slice(cut + 1)].forEach(function (parte, k) {
+  var g = document.createElement('span'); g.className = 'nl';
+  parte.split('').forEach(function (c) { var e = document.createElement('span'); e.className = 'ch'; e.innerHTML = c == ' ' ? '&nbsp;' : c; g.appendChild(e); });
+  n.appendChild(g); if (k == 0) n.appendChild(document.createTextNode(' '));
+});
 var ln = document.getElementById('ln'), L = ln.getTotalLength(); ln.style.strokeDasharray = L; ln.style.strokeDashoffset = L;
 gsap.timeline({ defaults: { ease: 'power3.out' } })
   .from('.small', { opacity: 0, y: -20, duration: 1 })
-  .from('#names span', { opacity: 0, y: 50, rotationX: -90, scale: .4, stagger: .07, duration: 1 }, '-=.4')
+  .from('#names .ch', { opacity: 0, y: 50, rotationX: -90, scale: .4, stagger: .07, duration: 1 }, '-=.4')
   .to(ln, { strokeDashoffset: 0, duration: 1.2 }, '-=.4')
   .from('.phrase', { opacity: 0, y: 20, duration: 1 }, '-=.6')
   .from('#play', { opacity: 0, scale: .5, duration: .8, ease: 'back.out(2)' }, '-=.4');
