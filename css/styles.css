@@ -1,0 +1,564 @@
+/* ==========================================================
+   ESTILOS – Invitación de boda Nayabe & Roger
+   ----------------------------------------------------------
+   1. Variables de color (paleta)      -> :root
+   2. Base, portada (hero), botones, secciones y tipografías
+   3. Contador, marcos (.pol), carrusel, papeles rasgados
+   4. Mapas, formulario
+   5. Cambios nuevos: banner de video, videos en marcos,
+      botones de asistencia y carrusel en computadora
+   ========================================================== */
+/* Paleta del cliente: C18F91 rosa fuerte, E3BFBF, E8CDC5, CFB080 dorado, F5E8D5 crema
+   --dark y --mid son tonos más profundos derivados del rosa para que el texto se lea bien */
+:root {
+    --dark: #5b3a3d;
+    --mid: #8c5c61;
+    --cream: #F5E8D5;
+    --gold: #CFB080;
+    --mel: #E8CDC5;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px)
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    margin: 0
+}
+
+body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--dark);
+    font-size: 20px;
+    text-align: center;
+    background: var(--cream)
+}
+
+body.lock {
+    overflow: hidden;
+    height: 100%
+}
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 25%, var(--mid), var(--dark) 70%)
+}
+
+.hero:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, #0006 100%);
+    pointer-events: none
+}
+
+.ring {
+    position: absolute;
+    width: min(130vw, 640px);
+    aspect-ratio: 1;
+    opacity: .35;
+    animation: spin 60s linear infinite;
+    z-index: 1
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.hero>.c {
+    position: relative;
+    z-index: 3
+}
+
+#fall {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden
+}
+
+#fall svg {
+    position: absolute;
+    top: 0;
+    will-change: transform
+}
+
+.small {
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: var(--gold)
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive, serif;
+    font-weight: 400;
+    font-size: clamp(52px, 16vw, 100px);
+    margin: .15em 0;
+    line-height: 1.1;
+    text-shadow: 0 0 28px var(--gold)
+}
+
+h1 span {
+    display: inline-block
+}
+
+.phrase {
+    font-style: italic;
+    font-size: 25px;
+    margin: 0 0 30px
+}
+
+.line {
+    width: min(260px, 70vw);
+    height: 12px;
+    display: block;
+    margin: 8px auto
+}
+
+.line path {
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5
+}
+
+button,
+.btn {
+    font: inherit;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--gold), #F5E8D5, var(--gold));
+    background-size: 200% 100%;
+    color: var(--dark);
+    border: 0;
+    border-radius: 40px;
+    padding: 13px 30px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    animation: sh 4s linear infinite
+}
+
+@keyframes sh {
+    to {
+        background-position: 200% 0
+    }
+}
+
+#play:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 40px;
+    border: 2px solid var(--gold);
+    animation: pulse 2s ease-out infinite
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.5);
+        opacity: 0
+    }
+}
+
+#mus {
+    position: fixed;
+    right: 16px;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 22px
+}
+
+#mus.spin {
+    animation: spin 5s linear infinite
+}
+
+.b {
+    position: relative;
+    overflow: hidden
+}
+
+.s {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 68px 26px
+}
+
+.cr {
+    background: radial-gradient(circle at 20% 0, #fffd, transparent 55%), var(--cream)
+}
+
+.me {
+    background: linear-gradient(180deg, #E3BFBF, var(--mel))
+}
+
+.wi {
+    background: radial-gradient(ellipse at 50% 0, var(--mid), var(--dark) 78%);
+    color: var(--cream)
+}
+
+h2 {
+    font-family: 'Great Vibes', cursive, serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.1;
+    margin: 0 0 12px;
+    color: var(--mid)
+}
+
+.wi h2 {
+    color: var(--gold)
+}
+
+h2:after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 1px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent)
+}
+
+.big {
+    font-size: 28px;
+    font-weight: 600;
+    margin: .25em 0
+}
+
+.lbl {
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 6px 0
+}
+
+.q {
+    font-style: italic;
+    font-size: 25px;
+    line-height: 1.5;
+    margin: 0 0 18px
+}
+
+.mono {
+    width: min(250px, 68vw);
+    display: block;
+    margin: 8px auto
+}
+
+.ml {
+    font-family: 'Great Vibes', cursive
+}
+
+.cd {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    margin: 20px 0
+}
+
+.cd .u {
+    min-width: 64px
+}
+
+.cd b {
+    display: block;
+    font-size: 50px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1
+}
+
+.cd i {
+    font-style: normal;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1
+}
+
+.cd span {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold)
+}
+
+.pol {
+    background: #fff;
+    padding: 12px 12px 56px;
+    box-shadow: 0 16px 40px #0003;
+    position: relative;
+    max-width: 310px;
+    margin: 0 auto
+}
+
+.ph {
+    aspect-ratio: 4/5;
+    background: radial-gradient(circle at 50% 35%, var(--mid), var(--dark));
+    color: var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-style: italic
+}
+
+.ph svg {
+    width: 48px;
+    height: 48px
+}
+
+.pol em {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font: 400 30px 'Great Vibes', cursive;
+    color: var(--mid)
+}
+
+.car {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 18px;
+    scrollbar-width: none;
+    padding: 14px 12% 24px
+}
+
+.car::-webkit-scrollbar {
+    display: none
+}
+
+.car .pol {
+    flex: 0 0 76%;
+    scroll-snap-align: center
+}
+
+.torn {
+    filter: drop-shadow(0 8px 14px #0003);
+    margin: 20px 0
+}
+
+.torn div {
+    background: #FBF4EC;
+    padding: 40px 16px;
+    clip-path: polygon(0% 0.8%, 4% 0.4%, 8% 1.7%, 12% 0.2%, 16% 1.4%, 20% 1%, 24% 0.2%, 28% 1.3%, 32% 0.1%, 36% 1.1%, 40% 0.2%, 44% 0.2%, 48% 1.1%, 52% 2.1%, 56% 0.3%, 60% 0.6%, 64% 1.6%, 68% 2.5%, 72% 1.5%, 76% 1%, 80% 2.5%, 84% 0.1%, 88% 2.2%, 92% 0.8%, 96% 0.4%, 100% 0.3%, 100% 50%, 100% 99.2%, 96% 97.9%, 92% 99.5%, 88% 98.5%, 84% 98.3%, 80% 99%, 76% 98.6%, 72% 99.8%, 68% 99.8%, 64% 99.5%, 60% 98.2%, 56% 98.9%, 52% 99.2%, 48% 98.5%, 44% 98.8%, 40% 99.2%, 36% 97.9%, 32% 98.2%, 28% 99.4%, 24% 98.5%, 20% 98.6%, 16% 97.7%, 12% 98.1%, 8% 99.3%, 4% 97.5%, 0% 99.7%, 0% 50%);
+    color: var(--dark)
+}
+
+.torn p {
+    margin: 0 0 4px
+}
+
+.cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px
+}
+
+.cols b {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 6px
+}
+
+.ico {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 6px;
+    color: var(--mid)
+}
+
+.hd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    color: var(--gold)
+}
+
+.hd:before,
+.hd:after {
+    content: "";
+    width: 1px;
+    height: 40px;
+    background: var(--gold)
+}
+
+.hd svg {
+    width: 24px;
+    height: 24px;
+    margin: 6px 0
+}
+
+.map {
+    display: block;
+    margin: 18px auto 0;
+    max-width: 340px;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--dark);
+    background: #FBF4EC;
+    box-shadow: 0 8px 22px #0002
+}
+
+.map svg {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+.map span {
+    display: block;
+    padding: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: 15px;
+    border-top: 1px solid var(--gold)
+}
+
+.pl {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pl 2s ease-out infinite
+}
+
+@keyframes pl {
+    to {
+        transform: scale(3.2);
+        opacity: 0
+    }
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    font: inherit;
+    font-size: 18px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: #FBF4EC;
+    color: var(--dark)
+}
+
+textarea {
+    height: 90px;
+    resize: none
+}
+
+.fo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh
+}
+
+.fo .s {
+    position: relative;
+    z-index: 2
+}
+
+.nm {
+    font: 400 48px 'Great Vibes', cursive;
+    margin: .1em 0;
+    color: var(--gold)
+}
+
+/* ===== 5. CAMBIOS NUEVOS ===== */
+:root{--rose:#C18F91;--blush:#E3BFBF}
+
+/* Banner con video 1 */
+.banner{position:relative;height:min(82svh,640px);overflow:hidden;background:var(--mid)}
+.banner video{width:100%;height:100%;object-fit:cover;display:block}
+.banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#5b3a3d99);pointer-events:none}
+.banner em{position:absolute;left:0;right:0;bottom:22px;z-index:2;font:400 clamp(40px,10vw,64px) 'Great Vibes',cursive;color:var(--cream);text-shadow:0 2px 14px #0006}
+
+/* Videos dentro de los marcos del carrusel */
+.pol{padding:12px}
+.ph video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Botones de asistencia (reemplazan la lista desplegable) */
+.opts{display:flex;gap:10px;margin:14px 0 6px}
+.opts label{flex:1;cursor:pointer;position:relative}
+.opts input{position:absolute;opacity:0;width:0;height:0;margin:0}
+.opts span{display:block;padding:12px 8px;border:1px solid var(--gold);border-radius:40px;background:#FBF4EC;color:var(--dark);font-size:18px;transition:background .2s,color .2s}
+.opts input:checked+span{background:var(--rose);border-color:var(--rose);color:#fff}
+.opts input:focus-visible+span{outline:2px solid var(--dark);outline-offset:2px}
+input:focus,textarea:focus{outline:0;border-color:var(--rose);box-shadow:0 0 0 3px #C18F9155}
+::placeholder{color:#5b3a3d99}
+
+/* Carrusel en computadora: se desliza solo, sin cortar el primer video */
+@media (min-width:768px){
+.wide{max-width:1000px}
+.car{justify-content:flex-start;padding:14px 24px 24px}
+.car .pol{flex:0 0 300px}
+}
+/* El ícono ♪ siempre gira cuando suena la música */
+@media (prefers-reduced-motion:reduce){*:not(#mus){animation:none!important}}
+
+
+/* ===== 6. PAPEL RASGADO CON TEXTURA + VIDEOS EN FORMATO CINE ===== */
+/* Textura de papel arrugado: se genera por código (no necesita imagen). Para usar tu propia imagen,
+   reemplaza el valor de background por: url("img/papel.jpg") center/cover */
+.torn div{
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .02' numOctaves='5' seed='8' result='t'/%3E%3CfeDiffuseLighting in='t' lighting-color='%23FBF1E2' surfaceScale='2.6'%3E%3CfeDistantLight azimuth='45' elevation='64'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23w%29'/%3E%3C/svg%3E") center/700px,#F5E8D5
+}
+.cols.one{grid-template-columns:1fr}
+
+/* Videos: tarjetas horizontales (16:9, como pantalla de cine) */
+.pol{background:var(--rose);padding:0;border:2px solid var(--gold);border-radius:16px;overflow:hidden;box-shadow:0 14px 30px #8c5c6133}
+.ph{aspect-ratio:16/9;background:var(--rose)}
+.car{padding:14px 8% 24px}
+.car .pol{flex:0 0 84%}
+
+/* Computadora: el carrusel ocupa casi todo el ancho de la pantalla, 3 videos a la vez */
+@media (min-width:768px){
+.wide{max-width:none}
+.car{gap:24px;padding:14px 4vw 28px}
+.car .pol{flex:0 0 calc((100% - 8vw - 48px) / 3)}
+}
+
+/* ===== 7. QUITAR BARRAS NEGRAS DE LOS VIDEOS =====
+   Los videos traen franjas negras arriba y abajo dentro del archivo.
+   Se hace zoom al video para cortarlas, y el recuadro es menos alargado (2:1).
+   --zoom: sube el número (1.3, 1.4) para cortar más; bájalo para ver más imagen. */
+.ph{aspect-ratio:2/1;overflow:hidden;--zoom:1.25}
+.ph video{transform:scale(var(--zoom))}
+.banner video{transform:scale(1.15)}

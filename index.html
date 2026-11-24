@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Nayabe &amp; Roger – Nuestra boda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- ESTILOS: todo el diseño y los colores están en css/styles.css -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="lock">
+    <!-- Símbolos SVG reutilizables (pétalos, iglesia, copas, mapa) -->
+<svg width="0" height="0" style="position:absolute">
+        <defs>
+            <symbol id="fl" viewBox="-12 -12 24 24">
+                <g fill="currentColor">
+                    <ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(0)" />
+                    <ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(72)" />
+                    <ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(144)" />
+                    <ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(216)" />
+                    <ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(288)" />
+                </g>
+                <circle r="2.2" fill="#E8CDC5" />
+            </symbol>
+            <symbol id="pt" viewBox="-12 -12 24 24">
+                <path d="M0-10C8-4 8 6 0 10C-8 6-8-4 0-10Z" fill="currentColor" />
+            </symbol>
+            <symbol id="ht" viewBox="0 0 24 24">
+                <path d="M12 21C5 15 2 11 2 7.5A5 5 0 0 1 12 6a5 5 0 0 1 10 1.5C22 11 19 15 12 21z"
+                    fill="currentColor" />
+            </symbol>
+            <symbol id="ch" viewBox="0 0 64 64">
+                <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+                    <path d="M32 3v10M27 7h10" />
+                    <path d="M24 22l8-8 8 8v12H24z" />
+                    <path d="M24 34H8v22h48V34H40" />
+                    <path d="M28 56V44a4 4 0 0 1 8 0v12" />
+                    <path d="M14 44v4M50 44v4" />
+                </g>
+            </symbol>
+            <symbol id="gl" viewBox="0 0 64 64">
+                <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+                    <path d="M14 12h16l-2 14a6 6 0 0 1-12 0z" />
+                    <path d="M22 32v18M15 50h14" />
+                    <path d="M36 16h16l-2 14a6 6 0 0 1-12 0z" />
+                    <path d="M44 36v14M37 50h14" />
+                    <path d="M34 6l2 5M41 3v6M48 6l-2 5" />
+                </g>
+            </symbol>
+            <symbol id="mp" viewBox="0 0 340 150">
+                <rect width="340" height="150" fill="#F5E8D5" />
+                <path d="M0 112C80 92 140 132 340 70" stroke="#E3BFBF" stroke-width="14" fill="none" />
+                <rect x="214" y="12" width="90" height="44" rx="6" fill="#E8CDC5" />
+                <g stroke="#fff" stroke-width="8" fill="none">
+                    <path d="M0 40H340M90 0V150M240 0V150" />
+                    <path d="M0 130L340 20" stroke-width="5" />
+                </g>
+                <g stroke="#e3d6bf" stroke-width="2">
+                    <path d="M0 72H340M40 0V150M160 0V150M290 0V150" />
+                </g>
+                <circle class="pl" cx="170" cy="94" r="7" fill="#8c5c61" opacity=".4" />
+                <path d="M170 96c-16-22-24-34-24-46a24 24 0 0 1 48 0c0 12-8 24-24 46z" fill="#8c5c61" />
+                <circle cx="170" cy="50" r="9" fill="#F5E8D5" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- ========== 1. PORTADA ========== -->
+    <section class="hero" id="hero">
+        <svg class="ring" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="96" fill="none" stroke="#CFB080" stroke-width=".6" stroke-dasharray="2 4" />
+            <circle cx="100" cy="100" r="84" fill="none" stroke="#CFB080" stroke-width=".8" />
+        </svg>
+        <div class="c">
+            <div class="small">Nos casamos</div>
+            <h1 id="names">Nayabe &amp; Roger</h1>
+            <svg class="line" viewBox="0 0 260 12">
+                <path id="ln" d="M0 6 H105 M155 6 H260 M130 1 L136 6 L130 11 L124 6 Z" />
+            </svg>
+            <p class="phrase">Un pacto con Dios hicimos tú y yo</p>
+            <button id="play">♪ Abrir invitación</button>
+        </div>
+    </section>
+    <div id="fall"></div>
+
+    <main id="info">
+        <!-- ========== 2. FRASE + MONOGRAMA + FECHA ========== -->
+        <section class="b cr">
+            <div class="s rv">
+                <p class="q">Dos caminos que se encontraron, un amor que creció cada día, y hoy queremos compartir contigo el comienzo de nuestra vida juntos.</p>
+                <svg class="mono" viewBox="0 0 260 260">
+                    <circle id="mr" cx="130" cy="130" r="122" fill="none" stroke="#CFB080" stroke-width="1.4" />
+                    <circle cx="130" cy="130" r="112" fill="none" stroke="#8c5c61" stroke-width=".8" stroke-dasharray="2 5" />
+                    <text class="ml m1" x="96" y="150" text-anchor="middle" font-size="120" fill="#8c5c61">N</text>
+                    <text class="ml m1" x="166" y="176" text-anchor="middle" font-size="120" fill="#C18F91">R</text>
+                    <text class="ml m1" x="130" y="212" text-anchor="middle" font-size="34" fill="#8c5c61">&amp;</text>
+                </svg>
+                <p class="lbl">20 · 02 · 2027</p>
+            </div>
+        </section>
+
+        <!-- ========== 3. CONTADOR (la fecha se cambia en js/config.js) ========== -->
+        <section class="b wi">
+            <div class="s rv">
+                <h2>¡Prepárate!</h2>
+                <p class="lbl">Solo faltan…</p>
+                <div class="cd">
+                    <div class="u"><b id="d">0</b><span>días</span></div><i>:</i>
+                    <div class="u"><b id="h">0</b><span>horas</span></div><i>:</i>
+                    <div class="u"><b id="mi">0</b><span>min</span></div><i>:</i>
+                    <div class="u"><b id="se">0</b><span>seg</span></div>
+                </div>
+                <p class="q" style="margin:0">para nuestro gran día</p>
+            </div>
+        </section>
+
+        <!-- ========== 4. BANNER: VIDEO 1 ========== -->
+        <section class="banner">
+            <video src="video/video1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+            <em>Nayabe &amp; Roger</em>
+        </section>
+
+        <!-- ========== 5. PADRES Y PADRINOS ========== -->
+        <section class="b me">
+            <div class="s rv">
+                <div class="torn">
+                    <div>
+                        <p>Con la bendición de Dios y nuestros padres:</p>
+                        <div class="cols">
+                            <p><b>Padres del novio</b>Víctor Solórzano Tineo 🕊️<br>Delia García Cordero</p>
+                            <p><b>Padres de la novia</b>Simeón Candado Peralta Torrejón 🕊️<br>Irma Lina Villanueva Mosquera</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="torn">
+                    <div>
+                        <p>Y nuestros padrinos:</p>
+                        <div class="cols one"><p><b>Padrinos de matrimonio</b>Arnaldo Rubén Soria Peralta<br>Elizabeth Liseyda Soria Cámara</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 6. CEREMONIA Y RECEPCIÓN ========== -->
+        <section class="b cr">
+            <div class="s">
+                <div class="rv"><svg class="ico"><use href="#ch" /></svg>
+                    <h2>Ceremonia</h2>
+                    <p class="big">2:30 p. m.</p>
+                    <p class="big">Seminario Mayor Casa de San José</p>
+                    <p>C. 2, Lurigancho</p>
+                    <a class="map" target="_blank" rel="noopener" href="https://maps.app.goo.gl/KTP31pprayGekeZe7?g_st=aw"><svg viewBox="0 0 340 150"><use href="#mp" /></svg><span>Cómo llegar · Google Maps</span></a>
+                </div>
+                <div class="hd"><svg><use href="#ht" /></svg></div>
+                <div class="rv"><svg class="ico"><use href="#gl" /></svg>
+                    <h2>Recepción</h2>
+                    <!-- Hora de la recepción: pendiente. Agrega aquí <p class="big">HH:MM</p> -->
+                    <p class="big">Av. Colectora, Calle 15 de Mayo Lt. 29</p>
+                    <p><em>Referencia: Portón Serna, a una cuadra de Monumental Mendoza</em></p>
+                    <a class="map" target="_blank" rel="noopener" href="https://maps.app.goo.gl/j4hnQHa2zRj1DeTc6?g_st=aw"><svg viewBox="0 0 340 150"><use href="#mp" /></svg><span>Cómo llegar · Google Maps</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 7. NUESTROS MOMENTOS: VIDEOS 2 AL 7 ========== -->
+        <section class="b me">
+            <div class="s wide" style="padding-left:0;padding-right:0">
+                <h2>Nuestros momentos</h2>
+                <div class="car" id="car">
+                    <div class="pol"><div class="ph"><video src="video/video2.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                    <div class="pol"><div class="ph"><video src="video/video4.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                    <div class="pol"><div class="ph"><video src="video/video3.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                    <div class="pol"><div class="ph"><video src="video/video6.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                    <div class="pol"><div class="ph"><video src="video/video5.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                    <div class="pol"><div class="ph"><video src="video/video7.mp4" muted loop playsinline autoplay preload="metadata"></video></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 8. ASISTENCIA ========== -->
+        <section class="b cr">
+            <div class="s rv">
+                <h2>Asistencia</h2>
+                <p>Agradecemos confirmar tu asistencia antes del 20 de febrero</p>
+                <div class="opts">
+                    <label><input type="radio" name="ok" value="Sí, asistiré" checked><span>Sí, asistiré</span></label>
+                    <label><input type="radio" name="ok" value="No podré asistir"><span>No podré asistir</span></label>
+                </div>
+                <input id="nm" placeholder="Nombre de los asistentes">
+                <textarea id="ms" placeholder="Mensaje para los novios"></textarea>
+                <a class="btn" id="wa" target="_blank" rel="noopener" href="#">Confirmar por WhatsApp</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== 9. DESPEDIDA ========== -->
+    <footer class="b wi fo"><svg class="ring" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="96" fill="none" stroke="#CFB080" stroke-width=".6" stroke-dasharray="2 4" />
+            <circle cx="100" cy="100" r="84" fill="none" stroke="#CFB080" stroke-width=".8" />
+        </svg>
+        <div class="s rv">
+            <div class="small">Con todo nuestro amor</div>
+            <h1>¡Te esperamos!</h1>
+            <p class="nm">Nayabe &amp; Roger</p>
+            <p class="lbl">20 · 02 · 2027</p>
+        </div>
+    </footer>
+
+    <button id="mus" aria-label="Música">♪</button>
+
+    <!-- JAVASCRIPT: cada archivo hace una sola cosa (ver README.md). El orden importa. -->
+    <script src="js/config.js"></script>
+    <script src="js/animaciones.js"></script>
+    <script src="js/cuenta-regresiva.js"></script>
+    <script src="js/musica.js"></script>
+    <script src="js/videos.js"></script>
+    <script src="js/asistencia.js"></script>
+</body>
+
+</html>
