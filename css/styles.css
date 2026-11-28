@@ -11,6 +11,7 @@
 /* Paleta del cliente: C18F91 rosa fuerte, E3BFBF, E8CDC5, CFB080 dorado, F5E8D5 crema
    --dark y --mid son tonos más profundos derivados del rosa para que el texto se lea bien */
 :root {
+    --script: 'MonteCarlo', cursive; /* FUENTE DE TÍTULOS, NOMBRES E INICIALES: cambia solo esta línea (y la del <link> en index.html) */
     --dark: #5b3a3d;
     --mid: #8c5c61;
     --cream: #F5E8D5;
@@ -107,7 +108,7 @@ body.lock {
 }
 
 h1 {
-    font-family: 'Great Vibes', cursive, serif;
+    font-family: var(--script);
     font-weight: 400;
     font-size: clamp(52px, 16vw, 100px);
     margin: .15em 0;
@@ -220,7 +221,7 @@ button,
 }
 
 h2 {
-    font-family: 'Great Vibes', cursive, serif;
+    font-family: var(--script);
     font-weight: 400;
     font-size: 54px;
     line-height: 1.1;
@@ -268,7 +269,7 @@ h2:after {
 }
 
 .ml {
-    font-family: 'Great Vibes', cursive
+    font-family: var(--script)
 }
 
 .cd {
@@ -336,7 +337,7 @@ h2:after {
     bottom: 10px;
     left: 0;
     right: 0;
-    font: 400 30px 'Great Vibes', cursive;
+    font: 400 30px var(--script);
     color: var(--mid)
 }
 
@@ -496,7 +497,7 @@ textarea {
 }
 
 .nm {
-    font: 400 48px 'Great Vibes', cursive;
+    font: 400 48px var(--script);
     margin: .1em 0;
     color: var(--gold)
 }
@@ -508,7 +509,7 @@ textarea {
 .banner{position:relative;height:min(82svh,640px);overflow:hidden;background:var(--mid)}
 .banner video{width:100%;height:100%;object-fit:cover;display:block}
 .banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#5b3a3d99);pointer-events:none}
-.banner em{position:absolute;left:0;right:0;bottom:22px;z-index:2;font:400 clamp(40px,10vw,64px) 'Great Vibes',cursive;color:var(--cream);text-shadow:0 2px 14px #0006}
+.banner em{position:absolute;left:0;right:0;bottom:22px;z-index:2;font:400 clamp(40px,10vw,64px) var(--script);color:var(--cream);text-shadow:0 2px 14px #0006}
 
 /* Videos dentro de los marcos del carrusel */
 .pol{padding:12px}
@@ -581,7 +582,7 @@ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wid
 .cols{grid-template-columns:1fr;gap:0;margin-top:20px}
 .fm{padding:22px 6px 4px}
 .fm+.fm{margin-top:18px;border-top:1px solid #CFB08099}
-.fm b{font:400 36px/1.1 'Great Vibes',cursive;font-style:normal;color:var(--mid);margin:0 0 12px}
+.fm b{font:400 36px/1.1 var(--script);font-style:normal;color:var(--mid);margin:0 0 12px}
 .fm span{display:block;font-size:22px;line-height:1.3;margin:5px 0;text-wrap:balance}
 
 
@@ -602,3 +603,54 @@ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' wid
 /* Fecha en una sola línea y más grande (ajusta el 56px si la quieres aún mayor) */
 .fecha{font-size:clamp(40px,11.5vw,58px);white-space:nowrap;letter-spacing:.04em;line-height:1.1}
 .fecha small{font-size:15px;margin-bottom:6px}
+
+
+/* ===== 10. MONOGRAMA, TEXTO ENTRE CEREMONIA Y RECEPCIÓN, CÓDIGO DE VESTIMENTA ===== */
+/* Monograma N R: usa la misma fuente --script que los títulos
+   (si cambias la fuente, agrégala también en el <link> de Google Fonts del index.html) */
+.ml{font-family:var(--script);font-weight:400}
+
+/* Texto debajo del corazón, antes de la recepción */
+.hd .inv{font:400 34px/1.15 var(--script);color:var(--mid);max-width:20ch;margin:10px 0 4px}
+
+/* Código de vestimenta */
+.vest{background:#FBF4EC;border-top:1px solid #CFB08099}
+.vest h2{font-size:clamp(40px,11vw,54px)}
+.vtipo{font:400 46px/1.1 var(--script);color:var(--dark);margin:6px 0 10px}
+.vico{width:min(300px,80vw);height:auto;display:block;margin:10px auto 26px;fill:var(--dark);stroke:none}
+.vtxt{font-size:23px;line-height:1.4;max-width:30ch;margin:0 auto 22px}
+.vcol{display:flex;justify-content:center;gap:14px}
+.vcol span{width:84px;height:44px;border-radius:44px;border:2px solid var(--dark)}
+.vcol .c1{background:#fff}
+.vcol .c2{background:#7b1f2e}
+
+
+/* ===== 11. UNA SOLA FUENTE (MonteCarlo) PARA NOMBRES, INICIALES Y TÍTULOS ===== */
+/* MonteCarlo solo existe en peso normal: la "negrita" se logra con un contorno fino del mismo color.
+   Para más negrita sube .022em (ej. .03em); para menos, bájalo (ej. .015em). */
+h1,h2,.nm,.banner em,.fm b,.vtipo,.hd .inv{-webkit-text-stroke:.022em currentColor;font-weight:400}
+h1{font-size:clamp(64px,19vw,112px);line-height:1.08;letter-spacing:0}
+h2{font-size:clamp(44px,12vw,58px);line-height:1.15;letter-spacing:0}
+.vest h2{font-size:clamp(40px,11vw,54px)}
+.nm{font-size:clamp(48px,13vw,64px);letter-spacing:0}
+.banner em{font-size:clamp(44px,11vw,72px);letter-spacing:0}
+.fm b{font:400 42px/1.15 var(--script);letter-spacing:0}
+.vtipo{font:400 50px/1.15 var(--script);letter-spacing:0}
+.hd .inv{font:400 34px/1.2 var(--script);letter-spacing:0;max-width:20ch}
+
+/* Letras pequeñas más grandes y más nítidas (Nos casamos, Sábado, Solo faltan…, días/horas) */
+.small{font-size:18px;font-weight:700;letter-spacing:.34em;color:var(--gold);text-shadow:0 1px 8px #0006}
+.phrase{font-size:28px}
+.fecha small{font-size:19px;font-weight:700}
+.lbl{font-size:16px;font-weight:700}
+.cd span{font-size:17px;font-weight:700}
+
+/* Icono del código de vestimenta */
+.vico{width:min(320px,86vw)}
+
+
+/* ===== 12. AJUSTES DE TEXTO ===== */
+/* Menos negrita en "Y al terminar la ceremonia..." y en "Formal" */
+.hd .inv,.vtipo{-webkit-text-stroke:.006em currentColor}
+/* "Con todo nuestro amor" más pequeño */
+.fo .small{font-size:14px;letter-spacing:.3em}
